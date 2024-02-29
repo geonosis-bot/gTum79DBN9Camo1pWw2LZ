@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include head.html %}
+
+  <body class="page-{{ page.namespace }}">
+    {% if site.data.manifest.is_undermaintenance %} {% include maintenance.html
+    %} {% else %}
+
+    <!-- No maintenance, show website content -->
+
+    <!-- Header -->
+    {% include header.html %}
+
+    <!-- Content -->
+    <div class="content team">
+      <section class="team-detail">
+        <div class="header">
+          <div class="container-fluid">
+            <!-- <h1 class="section-title">
+              {% if page.team_label and page.team_label != "" %} {{ page.team_label }} {% else %} {{
+              page.team_name }} {% endif %}  
+            </h1> -->
+            <h1 class="section-title">{{ page.team_name }}</h1>
+
+            <!-- Tabs -->
+            <ul class="nav nav-tabs" id="tab-menu" role="tablist">
+              {% if page.athletes or page.tech_staffs %}
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  id="team-tab"
+                  data-toggle="tab"
+                  href="#team"
+                  role="tab"
+                  aria-controls="team"
+                  aria-selected="true"
+                  >Rosa</a
+                >
+              </li>
+              {% endif %}
+
+              <!-- Results tab toggle -->
+              {% if page.results and page.results.size > 0 and
+              page.permissions.show_result %}
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  id="calendar-tab"
+                  data-toggle="tab"
+                  href="#calendar"
+                  role="tab"
+                  aria-controls="calendar"
+                  aria-selected="false"
+                  >Calendario e Risultati</a
+                >
+              </li>
+              {% endif %}
+
+              <!-- Standing tab toggle -->
+              {% if page.standing and page.standing.size > 0 and
+              page.permissions.show_standing %}
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  id="ranking-tab"
+                  data-toggle="tab"
+                  href="#ranking"
+                  role="tab"
+                  aria-controls="ranking"
+                  aria-selected="false"
+                  >Classifica</a
+                >
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+
+        {% assign permissions = page.permissions %}
+        <div class="tab-content" id="tab-content">
+          <!-- Team TAB -->
+          {% if page.athletes or page.tech_staffs %}
+          <div
+            class="tab-pane fade show active"
+            id="team"
+            role="tabpanel"
+            aria-labelledby="team-tab"
+          >
+            <!-- portieri -->
+            {% if page.athletes.POR and page.athletes.POR.size > 0 %}
+            <div class="team-section">
+              <div class="container-fluid">
+                <div class="team-section-header">
+                  <h3>Portieri</h3>
+                  <i class="las la-plus"></i>
+                </div>
+
+                <div class="people">
+                  <div>
+                    {% for item in page.athletes.POR %} {% include
+                    components/person.html item=item permissions=permissions %}
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+
+            <!-- difensori -->
+            {% if page.athletes.DIF and page.athletes.DIF.size > 0 %}
+            <div class="team-section">
+              <div class="container-fluid">
+                <div class="team-section-header">
+                  <h3>Difensori</h3>
+                  <i class="las la-plus"></i>
+                </div>
+
+                <div class="people">
+                  <div>
+                    {% for item in page.athletes.DIF %} {% include
+                    components/person.html item=item permissions=permissions %}
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+
+            <!-- centrocampisti -->
+            {% if page.athletes.CEN and page.athletes.CEN.size > 0 %}
+            <div class="team-section">
+              <div class="container-fluid">
+                <div class="team-section-header">
+                  <h3>Centrocampisti</h3>
+                  <i class="las la-plus"></i>
+                </div>
+
+                <div class="people">
+                  <div>
+                    {% for item in page.athletes.CEN %} {% include
+                    components/person.html item=item permissions=permissions %}
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+
+            <!-- attaccanti -->
+            {% if page.athletes.ATT and page.athletes.ATT.size > 0 %}
+            <div class="team-section">
+              <div class="container-fluid">
+                <div class="team-section-header">
+                  <h3>Attaccanti</h3>
+                  <i class="las la-plus"></i>
+                </div>
+
+                <div class="people">
+                  <div>
+                    {% for item in page.athletes.ATT %} {% include
+                    components/person.html item=item permissions=permissions %}
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+
+            <!-- giocatori -->
+            {% if page.athletes.GIO and page.athletes.GIO.size > 0 %}
+            <div class="team-section">
+              <div class="container-fluid">
+                <div class="team-section-header">
+                  <h3>Giocatori</h3>
+                  <i class="las la-plus"></i>
+                </div>
+
+                <div class="people">
+                  <div>
+                    {% for item in page.athletes.GIO %} {% include
+                    components/person.html item=item permissions=permissions %}
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+
+            <!-- staff tecnico -->
+            {% if page.tech_staffs.size > 0 %}
+            <div class="team-section">
+              <div class="container-fluid">
+                <div class="team-section-header">
+                  <h3>Staff tecnico</h3>
+                  <i class="las la-plus"></i>
+                </div>
+
+                <div class="people">
+                  <div>
+                    {% for item in page.tech_staffs %} {% include
+                    components/person.html item=item birthdate=false %} {%
+                    endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+          </div>
+          {% endif %}
+
+          <!-- Results TAB -->
+          {% if page.results and page.results.size > 0 and
+          page.permissions.show_result %}
+          <div
+            class="tab-pane fade"
+            id="calendar"
+            role="tabpanel"
+            aria-labelledby="calendar-tab"
+          >
+            {% for item in page.results %}
+            <div class="calendar-section">
+              <div class="container-fluid">
+                <div class="calendar-section-header">
+                  <h3>
+                    {{ item.step }}° Giornata
+                    <small class="date">{{ item.date }}</small>
+                  </h3>
+                  <i class="las la-plus"></i>
+                </div>
+
+                <div class="calendar">
+                  <div>
+                    {% for res in item.results %}
+
+                    <!-- home bold -->
+                    {% if res.home.bold %} {% assign home_class = "bold" %} {%
+                    else %} {% assign home_class = "" %} {% endif %}
+
+                    <!-- away bold -->
+                    {% if res.away.bold %} {% assign away_class = "bold" %} {%
+                    else %} {% assign away_class = "" %} {% endif %}
+
+                    <div class="match">
+                      <div>
+                        <div class="home {{home_class}}">
+                          <div class="info">
+                            <img
+                              class="club-logo"
+                              src="{%if res.home.club_logo %}{{res.home.club_logo}}{% else %}https://storage.googleapis.com/gle-assets/no-logo.png{% endif %}"
+                            />
+                            <span>{{ res.home.club_name }}</span>
+                          </div>
+
+                          <div class="score-wrap">
+                            {% if res.result.forfeit == "home" %}
+                            <div class="forfeit">tavolino</div>
+                            {% endif %} {% if res.result.home %}
+                            <div class="score">{{ res.result.home }}</div>
+                            {% else %}
+                            <div class="score">-</div>
+                            {% endif %}
+                          </div>
+                        </div>
+                        <div class="away {{away_class}}">
+                          <div class="info">
+                            <img
+                              class="club-logo"
+                              src="{%if res.away.club_logo %}{{res.away.club_logo}}{% else %}https://storage.googleapis.com/gle-assets/no-logo.png{% endif %}"
+                            />
+                            <span>{{ res.away.club_name }}</span>
+                          </div>
+                          <div class="score-wrap">
+                            {% if res.result.forfeit == "away" %}
+                            <div class="forfeit">tavolino</div>
+                            {% endif %} {% if res.result.away %}
+                            <div class="score">{{ res.result.away }}</div>
+                            {% else %}
+                            <div class="score">-</div>
+                            {% endif %}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          {% endif %}
+
+          <!-- Standings TAB -->
+          {% if page.standing and page.standing.size > 0 and
+          page.permissions.show_standing %}
+          <div
+            class="tab-pane fade"
+            id="ranking"
+            role="tabpanel"
+            aria-labelledby="ranking-tab"
+          >
+            <div class="container-fluid">
+              <div class="standings">
+                <div class="header">
+                  <h3>{{ page.standing.competition_name }}</h3>
+                </div>
+                <div class="table-responsive-xs table-responsive-sm">
+                  <table class="table standings-table">
+                    <thead>
+                      <tr>
+                        <th class="hidden-sm-down text-left">Pos.</th>
+                        <th class="text-left">Squadra</th>
+                        <th class="hidden-sm-down points">Punti</th>
+                        <th class="hidden-sm-down">G</th>
+                        <th class="hidden-sm-down">V</th>
+                        <th class="hidden-sm-down">P</th>
+                        <th class="hidden-sm-down">S</th>
+                        <th class="hidden-sm-down">GF</th>
+                        <th class="hidden-sm-down">GS</th>
+                        <th class="hidden-sm-down">DR</th>
+                        <th class="hidden-sm-down text-right last-5">
+                          Ultimi 5 risultati
+                        </th>
+
+                        <!-- Only mobile -->
+                        <th class="hidden-md-up">G</th>
+                        <th class="hidden-md-up">DR</th>
+                        <th class="hidden-md-up points">P</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for team in page.standing.teams %}
+
+                      <!-- home bold -->
+                      {% if team.bold %} {% assign row_class = "bold" %}
+                      {%else%} {% assign row_class = "" %} {% endif %} {% if
+                      team.out %} {% assign row_out_class = "out" %} {%else%} {%
+                      assign row_out_class = "" %} {% endif %}
+
+                      <tr class="{{row_class}} {{row_out_class}}">
+                        <td class="hidden-sm-down text-left">
+                          {{ team.position }}
+                        </td>
+                        <td class="text-left">
+                          <img
+                            class="club-logo"
+                            src="{%if team.club_logo %}{{team.club_logo}}{% else %}https://storage.googleapis.com/gle-assets/no-logo.png{% endif %}"
+                          />{{ team.club_name }} {% if team.penalty_points > 0
+                          %} <strong>(-{{team.penalty_points}})</strong>{% endif
+                          %}
+                        </td>
+                        <td class="hidden-sm-down points">{{ team.points }}</td>
+                        <td class="hidden-sm-down">{{ team.played }}</td>
+                        <td class="hidden-sm-down">{{ team.won }}</td>
+                        <td class="hidden-sm-down">{{ team.drawn }}</td>
+                        <td class="hidden-sm-down">{{ team.lost }}</td>
+                        <td class="hidden-sm-down">{{ team.gf }}</td>
+                        <td class="hidden-sm-down">{{ team.ga }}</td>
+                        <td class="hidden-sm-down">{{ team.gd }}</td>
+                        <td class="hidden-sm-down text-right last-5">
+                          {{ team.form }}
+                        </td>
+
+                        <!-- Only mobile -->
+                        <td class="hidden-md-up">{{ team.played }}</td>
+                        <td class="hidden-md-up">{{ team.gd }}</td>
+                        <td class="hidden-md-up points">{{ team.points }}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </section>
+    </div>
+
+    <!-- Footer -->
+    {% include footer.html %}
+
+    <!-- Scripts -->
+    {% include scripts.html %}
+
+    <!-- End -->
+    {% endif %}
+  </body>
+</html>

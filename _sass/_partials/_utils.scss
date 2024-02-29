@@ -1,0 +1,178 @@
+.first-color {
+  color: $first_color !important;
+}
+.second-color {
+  color: $second_color !important;
+}
+.black-color {
+  color: $black_color !important;
+}
+.white-color {
+  color: $white_color !important;
+}
+.first-color-bg {
+  background-color: $first_color !important;
+}
+.second-color-bg {
+  background-color: $second_color !important;
+}
+
+.font-light {
+  font-weight: $font_light !important;
+}
+.font-regular {
+  font-weight: $font_regular !important;
+}
+.font-medium {
+  font-weight: $font_medium !important;
+}
+.font-bold {
+  font-weight: $font_bold !important;
+}
+
+.nopadding {
+  padding: 0 !important;
+}
+
+.nomargin {
+  margin: 0 !important;
+}
+
+a {
+  color: $base_color;
+}
+
+.hidden {
+  display: none;
+}
+
+.hidden-xs {
+  @include respond-to(xs) {
+    display: none !important;
+  }
+}
+
+.hidden-sm {
+  @include respond-to(sm) {
+    display: none !important;
+  }
+}
+
+.hidden-md {
+  @include respond-to(md) {
+    display: none !important;
+  }
+}
+
+.hidden-lg {
+  @include respond-to(from-lg) {
+    display: none !important;
+  }
+}
+
+.hidden-sm-down {
+  @include respond-to(upto-sm) {
+    display: none !important;
+  }
+}
+
+.hidden-md-up {
+  @include respond-to(from-md) {
+    display: none !important;
+  }
+}
+
+.mt-40 {
+  margin-top: 40px;
+}
+
+button.slick-prev {
+  width: 50px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  color: transparent;
+  &:before {
+    content: "\e629";
+    display: block;
+    font-family: "themify";
+    font-size: 20px;
+    color: $base_color;
+    font-weight: 700;
+  }
+
+  right: 50px;
+  margin: 0;
+  position: absolute;
+  top: -68px;
+
+  // @media #{$desktop} {
+  //   position: absolute;
+  //   top: -90px;
+  //   right: 80px;
+  // }
+  // @media #{$smartphone} {
+  //   right: 50px;
+  //   margin: 0;
+  //   width: 10%;
+  //   position: absolute;
+  //   top: -68px;
+  // }
+  // @media #{$tablet_port} {
+  //   right: 50px;
+  //   margin: 0;
+  //   width: 10%;
+  //   position: absolute;
+  //   top: -90px;
+  // }
+}
+
+button.slick-next {
+  width: 50px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  color: transparent;
+  &:before {
+    content: "\e628";
+    display: block;
+    font-family: "themify";
+    font-size: 20px;
+    color: $base_color;
+    font-weight: 700;
+  }
+
+  position: absolute;
+  right: 0px;
+  margin: 0;
+  position: absolute;
+  top: -68px;
+
+  // @media #{$desktop} {
+  //   position: absolute;
+  //   top: -90px;
+  //   right: 0;
+  // }
+  // @media #{$smartphone} {
+  //   right: 0px;
+  //   margin: 0;
+  //   width: 10%;
+  //   position: absolute;
+  //   top: -68px;
+  // }
+  // @media #{$tablet_port} {
+  //   right: 0px;
+  //   margin: 0;
+  //   width: 10%;
+  //   position: absolute;
+  //   top: -90px;
+  // }
+}
+
+.alert {
+  border-radius: 0 !important;
+}
+
+a {
+  transition: color 0.5s;
+}

@@ -1,0 +1,231 @@
+.team-detail {
+  padding-top: 0;
+  .header {
+    padding-top: 80px;
+    @include respond-to(xs) {
+      padding: 60px 0 0;
+    }
+
+    .section-title {
+      color: $black_color !important;
+    }
+
+    background-color: $grey_color_super_light;
+    border-bottom: 1px solid $grey_color_light;
+
+    .nav-tabs {
+      border-bottom: none;
+
+      .nav-link {
+        border: none;
+        border-bottom: 3px solid transparent;
+        background: transparent;
+        margin-right: 40px;
+        font-size: 18px;
+        font-weight: $font_light;
+        color: $black_color !important;
+
+        &.active {
+          color: $black_color;
+          border-bottom-color: $first_color;
+        }
+      }
+
+      @include respond-to(upto-sm) {
+        margin: 0 -15px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        .nav-link {
+          font-size: 14px;
+          padding: 10px 15px;
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  .calendar-section,
+  .team-section {
+    border-bottom: 1px solid $grey_color_light;
+
+    // &:hover {
+    //   background-color: $grey_color_super_light;
+    //   transition: background-color 0.4s;
+    // }
+
+    div.calendar-section-header,
+    div.team-section-header {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 140px;
+
+      h3 {
+        margin: 0;
+        font-weight: $font_light;
+      }
+
+      i {
+        font-size: 26px;
+        color: $first_color;
+      }
+
+      @include respond-to(upto-sm) {
+        height: 100px;
+        h3 {
+          font-size: 20px;
+        }
+      }
+    }
+
+    div.calendar-section-header {
+      .date {
+        margin-left: 20px;
+        font-size: 14px;
+        color: $grey_color_dark;
+      }
+    }
+
+    div.calendar {
+      display: none;
+
+      > div {
+        display: grid;
+        grid-gap: 0;
+        padding-bottom: 40px;
+        grid-template-columns: repeat(2, 1fr);
+
+        .match {
+          padding: 10px 0;
+          display: grid;
+          grid-template-columns: auto 20px;
+          > div > div {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 50px;
+            padding: 0 30px;
+
+            .info {
+              span {
+                font-size: 16px;
+              }
+            }
+            .score {
+              font-size: 16px;
+            }
+
+            &.bold {
+              font-weight: $font_medium !important;
+              color: $first_color;
+            }
+            &:not(.bold) {
+              font-weight: $font_light !important;
+            }
+          }
+
+          .score-wrap {
+            display: flex;
+            align-items: center;
+            .forfeit {
+              color: $grey_color_dark;
+              font-size: 10px;
+              text-transform: uppercase;
+              margin-right: 10px;
+            }
+          }
+
+          border: 1px solid $grey_color_light;
+
+          &:nth-child(odd) {
+            border-left: none;
+          }
+          &:nth-child(even) {
+            border-right: none;
+            border-left: none;
+          }
+
+          &:nth-child(n + 3) {
+            border-top: none;
+          }
+          .club-logo {
+            width: 25px;
+            margin-right: 15px;
+
+            @include respond-to(xs) {
+              width: 20px;
+            }
+          }
+        }
+
+        @include respond-to(upto-sm) {
+          grid-template-columns: 1fr;
+          .match {
+            border-left: none;
+            border-right: none;
+            &:not(:first-child) {
+              border-top: none;
+            }
+
+            > div {
+              padding: 0;
+            }
+          }
+        }
+
+        @include respond-to(xlg) {
+          grid-template-columns: repeat(3, 1fr);
+          .match {
+            border: 1px solid $grey_color_light !important;
+
+            &:nth-child(3n + 1) {
+              border-left: none !important;
+            }
+            &:nth-child(3n + 2) {
+              border-left: none !important;
+              border-right: none !important;
+
+              &:last-child {
+                border-right: 1px solid $grey_color_light !important;
+              }
+            }
+            &:nth-child(3n + 3) {
+              border-right: none !important;
+            }
+
+            &:nth-child(n + 4) {
+              border-top: none !important;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .standings {
+    .header {
+      background: transparent;
+      display: flex;
+      align-items: center;
+      padding: 0;
+      height: 120px;
+      border: none;
+
+      h3 {
+        font-weight: $font_light;
+      }
+    }
+    .club-logo {
+      width: 35px;
+      margin-right: 20px;
+
+      @include respond-to(xs) {
+        width: 20px;
+      }
+    }
+  }
+}

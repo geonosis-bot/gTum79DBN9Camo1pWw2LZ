@@ -1,0 +1,153 @@
+<header class="main_menu home_menu">
+  <div class="container-fluid">
+    <!-- Logo and name -->
+    <a class="identity" href="{{ site.data.manifest.subpath }}">
+      <img src="{{ site.data.manifest.logo_url}}" width="300" alt="logo" />
+      <span>{{ site.data.manifest.club_name }}</span>
+    </a>
+
+    <!-- Menu -->
+    <div class="menu">
+      <ul>
+        <!-- society -->
+        {% if site.data.manifest.modules.club_history %}
+          {% if page.namespace == "club" %}
+            <li class="active" id="club"><a href="{{ site.data.manifest.subpath }}club">SOCIETÀ</a></li>
+            {% else %}
+            <li id="club"><a href="{{ site.data.manifest.subpath }}club">SOCIETÀ</a></li>
+          {% endif %}
+        {% endif %}
+
+        <!-- news -->
+        {% if site.data.manifest.modules.news %}
+          {% if page.namespace == "news" %}
+          <li class="active" id="news"><a href="{{ site.data.manifest.subpath }}news">NEWS</a></li>
+          {% else %}
+          <li id="news"><a href="{{ site.data.manifest.subpath }}news">NEWS</a></li>
+          {% endif %}
+        </li>
+        {% endif %}
+
+        <!-- teams -->
+        {% if site.data.manifest.modules.teams_for_menu and site.data.manifest.modules.teams_for_menu.size > 0 %}
+          {% if page.namespace == "teams" or page.team_id %}
+          <li id="teams" class="active"><a class="teams-menu-open">SQUADRE</a></li>
+          {% else %}
+          <li id="teams"><a class="teams-menu-open">SQUADRE</a></li>
+          {% endif %}
+        {% endif %}
+
+        <!-- sponsors -->
+        {% if site.data.manifest.modules.sponsors %}
+          {% if page.namespace == "sponsors" %}
+            <li id="sponsors" class="active"><a href="{{ site.data.manifest.subpath }}sponsors">SPONSOR</a></li>
+          {% else %}
+            <li id="sponsors"><a href="{{ site.data.manifest.subpath }}sponsors">SPONSOR</a></li>
+          {% endif %}
+        {% endif %}
+
+        <!-- contacts -->
+        {% if site.data.manifest.modules.contacts %}
+          {% if page.namespace == "contacts" %}
+            <li id="contacts" class="active"><a href="{{ site.data.manifest.subpath }}contacts">CONTATTI</a></li>
+          {% else %}
+            <li id="contacts"><a href="{{ site.data.manifest.subpath }}contacts">CONTATTI</a></li>
+          {% endif %}
+        {% endif %}
+      </ul>
+    </div>
+
+    <div class="mobile-menu-open">
+      <i class="las la-bars"></i>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu">
+    <div class="mobile-menu-toggle">
+      <div class="mobile-menu-close">
+        <i class="las la-times"></i>
+      </div>
+    </div>
+
+    <div class="menu">
+      <ul>
+        <!-- society -->
+        {% if site.data.manifest.modules.club_history %}
+        <li><a href="{{ site.data.manifest.subpath }}club">Società</a></li>
+        {% endif %}
+
+        <!-- teams -->
+        {% if site.data.manifest.modules.teams_for_menu and site.data.manifest.modules.teams_for_menu.size > 0 %}
+        <li><a class="mobile-teams-menu-open">Squadre</a></li>
+        {% endif %}
+
+        <!-- news -->
+        {% if site.data.manifest.modules.news %}
+        <li><a href="{{ site.data.manifest.subpath }}news">News</a></li>
+        {% endif %}
+
+        <!-- sponsors -->
+        {% if site.data.manifest.modules.sponsors %}
+        <li><a href="{{ site.data.manifest.subpath }}sponsors">Sponsor</a></li>
+        {% endif %}
+
+        <!-- contacts -->
+        {% if site.data.manifest.modules.contacts %}
+        <li><a href="{{ site.data.manifest.subpath }}contacts">Contatti</a></li>
+        {% endif %}
+      </ul>
+    </div>
+
+    <!-- Mobile teams menu -->
+    <div class="mobile-teams-menu">
+      <div>
+        <div class="left">
+          <div class="head">Squadre</div>
+          <div class="menu">
+                <ul>
+                  {% for item in site.data.manifest.modules.teams_for_menu %}
+                  <li>
+                    <a
+                      href="{{ site.data.manifest.subpath }}teams/{{item.slug}}"
+                      >{{ item.name }}</a
+                    >
+                  </li>
+                  {% endfor %}
+                </ul>
+          </div>
+        </div>
+        <div class="right">
+          <div class="mobile-teams-menu-close">
+            <i class="las la-arrow-right"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="club">
+      <img src="{{ site.data.manifest.logo_url}}" />
+      <span>{{ site.data.manifest.club_name }}</span>
+    </div>
+  </div>
+
+  <!-- Teams menu -->
+  <div class="teams-menu">
+    <div class="container-fluid">
+      <div class="teams-menu-close">
+        <i class="las la-times"></i>
+      </div>
+
+      <div class="menu-wrapper">
+        {% for item in site.data.manifest.modules.teams_for_menu %}
+          <a  href="{{ site.data.manifest.subpath }}teams/{{item.slug}}""><h3>{{ item.name }}</h3></a>
+      {% endfor %}
+      </div>
+    </div> 
+  </div>
+</header>
+
+<!-- Bad script to do a cool thing, must stay here and not in custom.js -->
+<script>
+  var currentActivePage = "{{ page.namespace }}";
+</script>

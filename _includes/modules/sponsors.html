@@ -1,0 +1,15 @@
+<section class="sponsors home">
+  <div class="container-fluid">
+    <h3 class="section-title">Sponsor</h3>
+
+    {% assign primary_sponsors = site.data.manifest.modules.sponsors |
+    where:"category","PRIMARY" %} {% if primary_sponsors.size > 0 %}
+    <div class="carousel-sponsor">
+      {% for item in primary_sponsors %} {% include components/sponsor.html
+      item=item %} {% endfor %}
+    </div>
+    {% else %}
+    <div>Non sono presenti sponsor</div>
+    {% endif %}
+  </div>
+</section>

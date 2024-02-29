@@ -1,0 +1,106 @@
+<section class="news home">
+  <div class="container-fluid">
+    <!-- Title -->
+    <h3 class="section-title">News</h3>
+
+    <!-- Grid -->
+    {% if site.data.manifest.modules.news.size > 0 %}
+    <div class="news-grid hidden-sm-down">
+      {% for item in site.data.manifest.modules.news limit:5 %} {% if
+      item.is_highlight == true and forloop.first %} {% if item.cover_url %} {%
+      assign news_image = item.cover_url %} {% else %} {% assign news_image =
+      null %} {% endif %}
+
+      <a
+        class="news-box highlight"
+        href="{{ site.data.manifest.subpath }}news/{{ item.slug }}"
+      >
+        <div
+          class="news-background-img"
+          style="background-image: url('{{ news_image }}')"
+        >
+          {% if news_image %}
+          <div class="overlay"></div>
+          {% endif %}
+          <div class="news-info">
+            <span class="news-category">{{ item.category }}</span>
+            <span class="news-date">{{ item.publish_date.DDMMYYYY }}</span>
+          </div>
+          <div class="news-heading">
+            <h3 class="news-title">{{ item.title }}</h3>
+            <hr />
+            <div class="news-content">
+              {{ item.body | markdownify | strip_html | truncatewords: 30 }}
+            </div>
+          </div>
+        </div>
+      </a>
+      {% endif %} {% if item.is_highlight != true or forloop.first != true %}
+      <a
+        class="news-box"
+        href="{{ site.data.manifest.subpath }}news/{{ item.slug }}"
+      >
+        {% if item.cover_url %} {% assign news_image = item.cover_url %} {% else
+        %} {% assign news_image = null %} {% endif %}
+
+        <span class="ti-arrow-top-right space-arrow"></span>
+        <div class="news-img" style="background-image: url('{{ news_image }}')">
+          {% if news_image %}
+          <div class="overlay"></div>
+          {% endif %}
+        </div>
+
+        <h3 class="news-title">{{ item.title }}</h3>
+        <div class="news-content">
+          {{ item.body | markdownify | strip_html | truncatewords: 20 }}
+        </div>
+        <div class="news-info">
+          <span class="news-category">{{ item.category }}</span>
+          <span class="news-date">{{ item.publish_date.DDMMYYYY }}</span>
+        </div>
+      </a>
+      {% endif %} {% endfor %}
+    </div>
+
+    <!-- Carousel (only for mobile) -->
+    <div class="news-carousel hidden-md-up">
+      {% for item in site.data.manifest.modules.news limit:5 %}
+      <a
+        class="news-box"
+        href="{{ site.data.manifest.subpath }}news/{{ item.slug }}"
+      >
+        {% if item.cover_url %} {% assign news_image = item.cover_url %} {% else
+        %} {% assign news_image = null %} {% endif %}
+
+        <span class="ti-arrow-top-right space-arrow"></span>
+        <div class="news-img" style="background-image: url('{{ news_image }}')">
+          {% if news_image %}
+          <div class="overlay"></div>
+          {% endif %}
+        </div>
+
+        <h3 class="news-title">{{ item.title }}</h3>
+        <div class="news-content">
+          {{ item.body | markdownify | strip_html | truncatewords: 20 }}
+        </div>
+        <div class="news-info">
+          <span class="news-category">{{ item.category }}</span>
+          <span class="news-date">{{ item.publish_date.DDMMYYYY }}</span>
+        </div> </a
+      >{% endfor %}
+    </div>
+
+    <!-- See more -->
+    <div class="see-more text-center">
+      <a
+        href="{{ site.data.manifest.subpath }}news"
+        class="btn btn-primary btn-3d"
+        >Vedi tutte</a
+      >
+    </div>
+
+    {% else %}
+    <div>Non sono presenti news</div>
+    {% endif %}
+  </div>
+</section>

@@ -1,0 +1,78 @@
+@import "./_mixins/responsive";
+
+.footer-area {
+  background: $back_dark;
+  padding: 50px 0 0 0;
+
+  .copy {
+    margin-top: 40px;
+    background: darken($back_dark, 2);
+    p {
+      font-size: 12px;
+    }
+    a {
+      color: $white_color;
+    }
+  }
+
+  .footer-widgets {
+    width: 100%;
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: 350px auto auto auto;
+
+    > div {
+
+      .foot-heading {
+        font-size: 16px;
+        color: $white_color;
+        margin: 0 0 20px;
+        font-weight: $font_medium;
+
+        &.club-name {
+          font-size: 20px;
+          margin: 0 0 5px;
+        }
+      }
+
+      a {
+        color: $white_color;
+      }
+
+      .social-links {
+        a {
+          margin: 0 10px 0 0;
+        }
+
+        @include respond-to(upto-sm) {
+          a {
+            margin: 0 30px 0 0;
+          }
+        }
+      }
+
+      ul {
+        > li {
+          margin: 5px 0;
+        }
+      }
+    }
+
+    @include respond-to(upto-sm) {
+      grid-template-columns: repeat(2, 1fr);
+
+      > div {
+        margin: 15px 0;
+        grid-column: span 2;
+      }
+    }
+  }
+
+  .affiliation {
+    color: #fff;
+    font-weight: $font_light;
+    a {
+      font-weight: $font_medium;
+    }
+  }
+}

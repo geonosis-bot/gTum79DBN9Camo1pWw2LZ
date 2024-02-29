@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include head.html %}
+
+  <body class="page-{{ page.namespace }}">
+    {% if site.data.manifest.is_undermaintenance %} {% include maintenance.html
+    %} {% else %}
+
+    <!-- No maintenance, show website content -->
+
+    <!-- Header -->
+    {% include header.html %}
+
+    <!-- Content -->
+    <div class="content {{ page.namespace }}">{{ content }}</div>
+
+    <!-- Footer -->
+    {% include footer.html %}
+
+    <!-- Scripts -->
+    {% include scripts.html %}
+
+    <!-- End -->
+    {% endif %}
+  </body>
+</html>

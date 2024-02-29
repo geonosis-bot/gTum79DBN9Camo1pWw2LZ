@@ -1,0 +1,41 @@
+<section class="next-matches first-color-bg">
+  <div class="container-fluid">
+    <h3 class="section-title">Prossime partite</h3>
+  </div>
+
+  <div class="events">
+    {% if site.data.manifest.modules.next_matches.size > 0 %}
+    <div class="marquee">
+      <div>
+        {% for event in site.data.manifest.modules.next_matches %}
+        <div class="event">
+          <h2 class="teams">
+            <span class="home {% if event.club_home.bold %}strong{% endif %}">{{ event.club_home.value }}</span>
+            -
+            <span class="away {% if event.club_away.bold %}strong{% endif %}">{{ event.club_away.value }}</span>
+          </h2>
+          <p class="championship">{{ event.championship_name }}</p>
+          <p class="championship">{{ event.date }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% else %}
+    <div class="container-fluid">Nessuna partita in programma</div>
+    {% endif %}
+  </div>
+
+  <div class="next-matches-carousel">
+    {% for event in site.data.manifest.modules.next_matches %}
+    <div class="event">
+      <h2 class="teams">
+        <span class="home {% if event.club_home.bold %}strong{% endif %}">{{ event.club_home.value }}</span>
+        -
+        <span class="away {% if event.club_away.bold %}strong{% endif %}">{{ event.club_away.value }}</span>
+      </h2>
+      <p class="championship">{{ event.championship_name }}</p>
+      <p class="championship">{{ event.date }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>

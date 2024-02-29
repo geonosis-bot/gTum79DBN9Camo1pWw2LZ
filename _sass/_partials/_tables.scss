@@ -1,0 +1,122 @@
+.table {
+  margin: 0;
+  thead {
+    tr {
+      th {
+        border-top: none !important;
+        border-bottom: 1px solid $grey_color_light;
+        font-weight: $font_regular;
+        color: $grey_color_dark;
+        font-size: 16px;
+      }
+    }
+  }
+  tbody {
+    tr {
+      td {
+        border-top: none !important;
+        border-bottom: 1px solid $grey_color_light;
+        padding: 30px 10px;
+        font-size: 16px;
+        font-weight: $font_light;
+      }
+
+      &.bold {
+        td {
+          font-weight: $font_medium !important;
+          color: $first_color;
+        }
+      }
+
+      &.out {
+        td {
+          border-top: 2px solid $grey_color_dark !important;
+          background: $grey_color_light;
+          color: $grey_color_dark !important;
+        }
+
+        +.out {
+          td {
+            border-top: none !important;
+          }
+        }
+      }
+    }
+  }
+
+  &.standings-table {
+    thead {
+      tr {
+        th {
+          width: 40px;
+          text-align: center;
+
+          &:nth-child(2) {
+            width: 450px;
+          }
+          &.last-5 {
+            width: 200px;
+          }
+
+          &.points {
+            font-weight: $font_medium;
+          }
+        }
+      }
+    }
+    tbody {
+      tr {
+        td {
+          width: 40px;
+          text-align: center;
+          &:nth-child(2) {
+            width: 450px;
+          }
+          &.last-5 {
+            width: 200px;
+          }
+
+          &.points {
+            font-weight: $font_medium;
+          }
+        }
+
+        &:nth-child(odd) {
+          background-color: inherit;
+        }
+        &:nth-child(even) {
+          background-color: #fafafa;
+        }
+      }
+    }
+
+    @include respond-to(upto-sm) {
+      table-layout: fixed;
+      thead {
+        tr {
+          th {
+            &:nth-child(2) {
+              border-right: 1px solid $grey_color_light;
+              width: 210px;
+              padding-left: 0;
+            }
+            font-size: 14px;
+          }
+        }
+      }
+      tbody {
+        tr {
+          td {
+            font-size: 14px;
+            &:nth-child(2) {
+              border-right: 1px solid $grey_color_light;
+              width: 210px;
+              font-size: 12px;
+              padding-left: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

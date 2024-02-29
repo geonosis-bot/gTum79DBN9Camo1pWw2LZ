@@ -1,0 +1,76 @@
+---
+# this ensures Jekyll reads the file to be transformed into CSS later
+# only Main files contain this front matter, not partials.
+---
+
+// Colors from _config.yml
+$first_color: {{ site.data.manifest.first_color }};
+$second_color: {{ site.data.manifest.second_color }};
+$text_on_first_color: {{ site.data.manifest.text_on_first_color }};
+$text_on_second_color: {{ site.data.manifest.text_on_second_color }};
+
+// Intro image (used in css so get it as variable)
+$intro_background_img: "{{site.data.manifest.modules.intro.background_url }}";
+
+// variable scss
+@import "variables";
+
+// mixin scss
+@import "mixins";
+@import "extends";
+// default scss
+@import "common";
+
+// button scss
+@import "button";
+
+@import "blog";
+@import "single_blog";
+
+// body scss
+@import "menu";
+@import "our_service";
+@import "about_part";
+@import "our_project";
+@import "review";
+@import "member_counter";
+@import "project_details";
+@import "cource_details";
+@import "testimonial_part";
+@import "sections";
+
+@import "elements";
+@import "blog_part";
+@import "copyright_part";
+@import "contact";
+
+// breadcrumb scss
+@import "breadcrumb";
+
+// The Space
+@import "thespace";
+
+// Modules
+@import "maintenance";
+@import "_modules/intro";
+@import "_modules/preenrolled";
+@import "_modules/news";
+@import "_modules/next_matches";
+@import "_modules/sponsors";
+@import "_modules/teams";
+@import "_modules/contacts";
+@import "_modules/club";
+
+// Partials
+@import "_partials/sections";
+@import "_partials/buttons";
+@import "_partials/header";
+@import "_partials/utils";
+@import "_partials/forms";
+@import "_partials/socials";
+@import "_partials/footer";
+@import "_partials/not_found";
+@import "_partials/tables";
+@import "_partials/people";
+
+

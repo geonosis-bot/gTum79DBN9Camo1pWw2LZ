@@ -1,0 +1,33 @@
+# Build settings
+plugins:
+  - jekyll-datapage-generator
+#   - jekyll-feed
+#   - jekyll-multiple-languages-plugin
+
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Multilang
+# languages: ["it", "en"]
+# exclude_from_localizations: ["assets"]
+# default_locale_in_subfolder: false
+
+permalink: pretty
+
+page_gen-dirs: true # uncomment, if you prefer to generate named folders
+
+page_gen:
+  - data: "manifest.modules.news" # name of a data set in _data
+    template: "news-detail-page" #name of template in _layouts: will be used to render pages
+    name: "slug" # field used to generate the filename
+    dir: "news" # directory where filenames will be generated
+    title: "title" # field used to generate the page title
+    extension: "html" # extension used to generate the filename
+
+  - data: "manifest.modules.teams" # name of a data set in _data
+    template: "team-detail-page" #name of template in _layouts: will be used to render pages
+    name: "team_slug" # field used to generate the filename
+    dir: "teams" # directory where filenames will be generated
+    title: "team_name" # field used to generate the page title
+    extension: "html" # extension used to generate the filename
